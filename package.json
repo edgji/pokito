@@ -1,0 +1,22 @@
+{
+  "name": "pokito",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo",
+    "dev": "poi",
+    "build": "poi build",
+    "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "firebase-tools": "^3.13.1",
+    "poi": "^9.3.10",
+    "xo": "^0.18.2"
+  },
+  "dependencies": {
+    "bulma": "^0.6.0",
+    "firebase": "^4.5.0",
+    "vuex": "^3.0.0",
+    "vuexfire": "^2.3.0"
+  }
+}
