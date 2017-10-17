@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "firebase-tools": "^3.13.1",
+    "node-sass": "^4.5.3",
     "poi": "^9.3.10",
+    "sass-loader": "^6.0.6",
     "xo": "^0.18.2"
   },
   "dependencies": {
