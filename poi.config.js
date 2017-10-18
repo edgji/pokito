@@ -3,6 +3,6 @@ module.exports = {
   extendWebpack(config) {
     config.resolve
       .alias
-        .set('package', path.resolve(__dirname, '../package.json'))
+        .set('package', path.resolve(__dirname, './package.json'))
   }
 }
