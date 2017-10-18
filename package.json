@@ -1,5 +1,5 @@
 {
-  "name": "pokito",
+  "name": "pokito-poker",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
