@@ -1,11 +1,20 @@
 <template>
-  <TheNav/>
+  <div>
+    <TheNav/>
+    <section class="section">
+      <div class="container">
+        <CardOptions/>
+      </div>
+    </section>
+  </div>
 </template>
 <script>
   import TheNav from '@/components/TheNav'
+  import CardOptions from '@/components/CardOptions'
   export default {
     components: {
-      TheNav
+      TheNav,
+      CardOptions
     },
     computed: {
     }
