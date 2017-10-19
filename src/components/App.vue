@@ -4,6 +4,7 @@
     <section class="section">
       <div class="container">
         <CardOptions/>
+        <button class="button is-primary" @click="addGame()">Start New Game</button>
       </div>
     </section>
     <footer class="footer">
@@ -18,14 +19,22 @@
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex'
   import TheNav from '@/components/TheNav'
   import CardOptions from '@/components/CardOptions'
+
   export default {
     components: {
       TheNav,
       CardOptions
     },
     computed: {
+    },
+    methods: mapActions([
+      'addGame'
+    ]),
+    mounted () {
+      this.$store.dispatch('initGamesRef')
     }
   }
 </script>
