@@ -9,6 +9,7 @@
     "deploy": "firebase deploy"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "firebase-tools": "^3.13.1",
     "node-sass": "^4.5.3",
     "poi": "^9.3.10",
