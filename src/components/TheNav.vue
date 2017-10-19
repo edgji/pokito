@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item brand-text">
-          <img src="static/logo.svg" alt="Pokito Poker">
+          <img src="logo.svg" alt="Pokito Poker">
         </a>
       </div>
     </div>
