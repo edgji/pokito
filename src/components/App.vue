@@ -4,6 +4,7 @@
     <section class="section">
       <div class="container">
         <CardOptions/>
+        <point-votes-list/>
         <button class="button is-primary" @click="addGame()">Start New Game</button>
       </div>
     </section>
@@ -22,11 +23,13 @@
   import { mapActions } from 'vuex'
   import TheNav from '@/components/TheNav'
   import CardOptions from '@/components/CardOptions'
+  import PointVotesList from '@/components/PointVotesList'
 
   export default {
     components: {
       TheNav,
-      CardOptions
+      CardOptions,
+      PointVotesList
     },
     computed: {
     },
