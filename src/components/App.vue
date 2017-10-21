@@ -3,7 +3,7 @@
     <the-nav/>
     <section class="section">
       <div class="container">
-        <CardOptions/>
+        <router-view></router-view>
       </div>
     </section>
   </div>
@@ -11,12 +11,10 @@
 <script>
   import { mapActions } from 'vuex'
   import TheNav from '@/components/TheNav'
-  import CardOptions from '@/components/CardOptions'
 
   export default {
     components: {
       TheNav,
-      CardOptions,
     },
     computed: {
     },
