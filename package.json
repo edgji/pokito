@@ -14,12 +14,15 @@
     "node-sass": "^4.5.3",
     "poi": "^9.3.10",
     "sass-loader": "^6.0.6",
+    "tachyons": "^4.8.1",
+    "tachyons-flexbox": "^2.0.5",
     "xo": "^0.18.2"
   },
   "dependencies": {
     "bulma": "^0.6.0",
     "firebase": "^4.5.0",
     "vue": "^2.5.2",
+    "vue-router": "^3.0.1",
     "vuex": "^3.0.0",
     "vuexfire": "^2.3.0"
   }
