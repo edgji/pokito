@@ -1,7 +1,10 @@
 <template>
-  <div class="columns">
-    <div v-for="card in cards" class="column box">{{ card }}</div>
-    <div class="column box">
+  <div>
+    <div class="ba black-70 grow br2 b inline-flex items-center mr3 mb3 pv2 ph3"
+         v-for="value in scale">
+      <span>{{ value }}</span>
+    </div>
+    <div class="ba black-70 grow br2 b inline-flex items-center mr3 mb3 pv2 ph3">
       <span class="icon">
         <i class="fa fa-coffee"></i>
       </span>
@@ -13,7 +16,7 @@
   export default {
     data() {
       return {
-        cards: [ 0, '½', 1, 2, 3, 5, 8, 13, 20, 40, 100, '?', '∞' ]
+        scale: [ 0, '½', 1, 2, 3, 5, 8, 13, 20, 40, 100, '?', '∞' ]
       }
     }
   }
