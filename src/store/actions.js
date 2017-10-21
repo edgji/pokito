@@ -1,15 +1,16 @@
 import { firebaseAction } from 'vuexfire'
 import { database } from 'firebase'
+import router from '@/router'
 import app from '@/firebase'
 
-export const setGamesRef = firebaseAction(({ bindFirebaseRef }, ref) => bindFirebaseRef('games', ref))
+export const setGameRef = firebaseAction(({ bindFirebaseRef }, ref) => bindFirebaseRef('game', ref))
 
-export const initGamesRef = ({ dispatch }) => {
-  const ref = app.database().ref('games')
-  dispatch('setGamesRef', ref)
+export const initGameRef = ({ dispatch }, gameId) => {
+  const ref = app.database().ref(`games/${gameId}`)
+  dispatch('setGameRef', ref)
 }
 
-export const addGame = ({ name }) => {
+export const addGame = ({ dispatch }, name) => {
   app.database()
     .ref('games')
     .push({
@@ -18,9 +19,12 @@ export const addGame = ({ name }) => {
       stories: [],
       created: database.ServerValue.TIMESTAMP
     })
+    .then(({ key }) => {
+      router.push({ name: 'play', params: { gameId: key } })
+    })
 }
 
-export const addStory = ({ gameId, name }) => {
+export const addStory = ({ dispatch }, { gameId, name }) => {
   app.database()
     .ref(`games/${gameId}/stories`)
     .push({
