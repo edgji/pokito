@@ -17,6 +17,7 @@ export const addGame = ({ dispatch }, name) => {
       name: name || '',
       users: [],
       stories: [],
+      pointing: false,
       created: database.ServerValue.TIMESTAMP
     })
     .then(({ key }) => {
@@ -30,5 +31,14 @@ export const addStory = ({ dispatch }, { gameId, name }) => {
     .push({
       name: name || '',
       points: ''
+    })
+}
+
+export const setPointingStory = ({ dispatch }, { gameId, storyId }) => {
+  console.log('gameId', gameId)
+  console.log('storyId', storyId)
+  app.database()
+    .ref(`games/${gameId}`).update({
+      pointing: storyId
     })
 }

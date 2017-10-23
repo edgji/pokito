@@ -7,8 +7,8 @@ export default [
     component: GameRoom,
     props: true
   },
-  {
-    path: '*',
-    redirect: '/'
-  },
+  // {
+  //   path: '*',
+  //   redirect: '/'
+  // },
 ]

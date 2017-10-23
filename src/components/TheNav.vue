@@ -7,7 +7,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" @click="addGame()">Start New Game</a>
+        <a class="navbar-item" @click="addGame()">Create New Game</a>
       </div>
     </div>
   </nav>
