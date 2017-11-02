@@ -7,7 +7,9 @@ export const setGameRef = firebaseAction(({ bindFirebaseRef }, ref) => bindFireb
 
 export const initGameRef = ({ dispatch }, gameId) => {
   const ref = app.database().ref(`games/${gameId}`)
-  dispatch('setGameRef', ref)
+  ref.once('value').then(snapshot => {
+    snapshot.exists() ? dispatch('setGameRef', ref) : router.push('/')
+  })
 }
 
 export const addGame = ({ dispatch }, name) => {
