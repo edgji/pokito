@@ -1,11 +1,11 @@
 <template>
   <div>
-    {{ pointingStory }}
+    {{ game.pointing }}
     <story-form :gameId="gameId"/>
     <card-options/>
     <ul>
       <li
-        v-for="(story, key) in stories"
+        v-for="(story, key) in game.stories"
         :key="key"
         @click="setActiveStory(key)">
         {{ story.name }}
@@ -20,17 +20,14 @@
   import StoryForm from '@/components/StoryForm'
 
   export default {
-    props: ['gameId'],
+    props: ['gameId', 'gameRef'],
     components: {
       CardOptions,
       StoryForm,
     },
     computed: {
-      stories() {
-        return this.$store.state.game.stories || []
-      },
-      pointingStory() {
-        return this.$store.state.game.pointing || false
+      game() {
+        return this.$store.state.game
       }
     },
     methods: {
@@ -39,8 +36,17 @@
       },
       ...mapActions([
         'initGameRef',
+        'setGameRef',
         'setPointingStory',
       ])
+    },
+    beforeRouteUpdate(to, from, next) {
+      if ('play' == to.name) {
+        to.params.gameRef
+          ? this.setGameRef(to.params.gameRef)
+          : this.initGameRef(this.gameId)
+      }
+      next()
     },
     created() {
       this.initGameRef(this.gameId)

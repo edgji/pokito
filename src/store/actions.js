@@ -20,9 +20,10 @@ export const addGame = ({ dispatch }, name) => {
       pointing: false,
       created: database.ServerValue.TIMESTAMP
     })
-    .then(({ key }) => {
-      router.push({ name: 'play', params: { gameId: key } })
-    })
+    .then(ref => router.push({
+      name: 'play',
+      params: { gameId: ref.key, gameRef: ref }
+    }))
 }
 
 export const addStory = ({ dispatch }, { gameId, name }) => {
