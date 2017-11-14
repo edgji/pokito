@@ -9,11 +9,18 @@
   </div>
 </template>
 <script>
+  import { mapActions } from 'vuex'
   import TheNav from '@/components/TheNav'
 
   export default {
     components: {
       TheNav,
+    },
+    methodds: {
+      ...mapActions(['authAnonymous'])
+    },
+    created() {
+      this.authAnonymous()
     },
   }
 </script>

@@ -2,6 +2,13 @@ import { firebaseAction } from 'vuexfire'
 import { database } from 'firebase'
 import router from '@/router'
 import app from '@/firebase'
+import * as types from './mutation-types'
+
+export const authAnonymous = ({ commit }) => {
+  app.auth().signInAnonymously().then(user => {
+    commit(types.SET_USER, user)
+  })
+}
 
 export const setGameRef = firebaseAction(({ bindFirebaseRef }, ref) => bindFirebaseRef('game', ref))
 
@@ -12,7 +19,7 @@ export const initGameRef = ({ dispatch }, gameId) => {
   })
 }
 
-export const addGame = ({ dispatch }, name) => {
+export const addGame = ({ dispatch, state }, name) => {
   app.database()
     .ref('games')
     .push({
@@ -20,7 +27,8 @@ export const addGame = ({ dispatch }, name) => {
       users: [],
       stories: [],
       pointing: false,
-      created: database.ServerValue.TIMESTAMP
+      createdAt: database.ServerValue.TIMESTAMP,
+      createdBy: state.user.uid || ''
     })
     .then(ref => router.push({
       name: 'game.edit',
@@ -44,4 +52,16 @@ export const setPointingStory = ({ dispatch }, { gameId, storyId }) => {
     .ref(`games/${gameId}`).update({
       pointing: storyId
     })
+}
+
+export const userJoinGame = ({ dispatch, getters }, userToAdd) => {
+  if (!getters.getUserInGameById(userToAdd.uid)) {
+    app.database()
+      .ref(`games/${gameId}/users`)
+      .push({
+        uid: userToAdd.uid,
+        displayName: userToAdd.displayName,
+        observer: false
+      })
+  }
 }
