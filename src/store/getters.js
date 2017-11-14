@@ -1,1 +1,1 @@
-export const games = state => state.games
+export const game = state => state.game
