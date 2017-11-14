@@ -23,7 +23,7 @@ export const addGame = ({ dispatch }, name) => {
       created: database.ServerValue.TIMESTAMP
     })
     .then(ref => router.push({
-      name: 'play',
+      name: 'game.edit',
       params: { gameId: ref.key, gameRef: ref }
     }))
 }
