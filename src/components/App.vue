@@ -16,7 +16,7 @@
     components: {
       TheNav,
     },
-    methodds: {
+    methods: {
       ...mapActions(['authAnonymous'])
     },
     created() {
