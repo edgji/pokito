@@ -1,6 +1,7 @@
 import GameRoom from '@/components/GameRoom'
 import GamePlay from '@/components/GamePlay'
 import GameEdit from '@/components/GameEdit'
+import UserLogin from '@/components/UserLogin'
 
 export default [
   {
@@ -23,6 +24,11 @@ export default [
       gameId: route.params.gameId,
       gameRef: route.params.gameRef || false
     })
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: UserLogin
   },
   // {
   //   path: '*',
