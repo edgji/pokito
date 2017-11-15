@@ -30,10 +30,16 @@ export const addGame = ({ dispatch, state }, name) => {
       createdAt: database.ServerValue.TIMESTAMP,
       createdBy: state.user.uid || ''
     })
-    .then(ref => router.push({
-      name: 'game.edit',
-      params: { gameId: ref.key, gameRef: ref }
-    }))
+    .then(ref => ref.once('value'))
+    .then(snapshot => {
+      const { key: gameId, ref: gameRef } = snapshot
+      const { createdAt, createdBy } = snapshot.val()
+
+      // track games created by user
+      createdBy && app.database().ref(`users/${createdBy}/games/${gameId}`).set({ createdAt })
+
+      router.push({ name: 'game.edit', params: { gameId, gameRef } })
+    })
 }
 
 export const addStory = ({ dispatch }, { gameId, name }) => {
