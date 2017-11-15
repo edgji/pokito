@@ -5,14 +5,19 @@
   </div>
 </template>
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     methods: {
       ...mapActions(['authAnonymous'])
     },
-    created() {
-      this.$store.watch((_, getters) => getters.isAuthenticated, value => value && this.$router.push('/'))
+    watch: {
+      isAuthenticated(value) {
+        value && this.$router.push('/')
+      }
     },
   }
 </script>
