@@ -7,16 +7,19 @@
         </a>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" @click="addGame()">Create New Game</a>
+        <a v-if="isAuthenticated" class="navbar-item" @click="addGame()">Create New Game</a>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters(['isAuthenticated'])
+    },
     methods: mapActions([
       'addGame',
     ]),
