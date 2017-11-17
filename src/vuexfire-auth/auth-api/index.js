@@ -2,6 +2,7 @@ import createUserWithEmailAndPassword from './createUserWithEmailAndPassword'
 import signInWithEmailAndPassword from './signInWithEmailAndPassword'
 import sendPasswordResetEmail from './sendPasswordResetEmail'
 import signInWithPopup from './signInWithPopup'
+import signInAnonymously from './signInAnonymously'
 import signOut from './signOut'
 
 export const auth = {
@@ -9,6 +10,7 @@ export const auth = {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   signInWithPopup,
+  signInAnonymously,
   signOut,
 }
 
